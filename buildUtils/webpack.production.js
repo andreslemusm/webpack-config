@@ -1,44 +1,39 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 
 /**
  * @return {import('webpack').Configuration}
  */
 module.exports = () => ({
-  output: {
-    filename: "bundle.js",
-  },
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.css$/iu,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.tsx?$/u,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: "ts-loader",
             options: {
-              esModule: true,
+              transpileOnly: true,
+              compilerOptions: {
+                jsx: "react-jsx",
+              },
             },
           },
-          "css-loader",
         ],
       },
     ],
   },
+  optimization: {
+    minimizer: [new TerserJSPlugin(), new CssMinimizerPlugin()],
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      chunkFilename: "css/[id]-lazy-chunk.css",
     }),
   ],
-  optimization: {
-    minimizer: [
-      new TerserJSPlugin(),
-      new OptimizeCssAssetsPlugin({
-        cssProcessorPluginOptions: {
-          preset: ["default", { discardComments: { removeAll: true } }],
-        },
-      }),
-    ],
-  },
 });

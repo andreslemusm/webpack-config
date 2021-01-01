@@ -2,18 +2,42 @@
  * @return {import('webpack').Configuration}
  */
 module.exports = () => ({
-  devtool: "eval-source-map",
-  devServer: { hot: true, liveReload: false, open: true },
-  output: {
-    chunkFilename: "[name].lazy-chunk.js",
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    liveReload: false,
+    open: true,
   },
+  devtool: "eval-cheap-module-source-map",
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/iu,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.tsx?$/u,
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
     ],
+  },
+  output: {
+    publicPath: "/",
   },
   plugins: [],
 });

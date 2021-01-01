@@ -1,14 +1,21 @@
 {
+  "include": ["./src"],
+  "exclude": ["./node_modules", "./dist"],
   "compilerOptions": {
-    "target": "ES5",
-    "sourceMap": true,
     "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "module": "ESNext",
-    "jsx": "react",
     "moduleResolution": "Node",
-    "strict": true
-  },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist"]
+    "baseUrl": "./",
+    "jsx": "react-jsxdev",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "sourceMap": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "forceConsistentCasingInFileNames": true,
+    // Use paths to avoid importing modules like this: ../../../../module.
+    "paths": {
+      // "components/*": ["src/components/*"]
+    }
+  }
 }
