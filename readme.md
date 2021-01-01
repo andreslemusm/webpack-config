@@ -1,6 +1,12 @@
-# Webpack Config!
+# Webpack Config
 
 Skeleton of a webpack initial configuration, with best practices in mind.
+
+---
+
+For an initial configuration using React, check: [react's branch](https://github.com/andreslemusm/webpack-config/tree/react)
+
+---
 
 # Get Started
 
