@@ -1,6 +1,6 @@
 # Webpack Config
 
-Skeleton of a webpack initial configuration, with best practices in mind.
+Webpack initial configuration, with best practices in mind.
 
 ---
 
