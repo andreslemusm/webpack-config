@@ -36,15 +36,15 @@ This webpack configuration is splitted in the two most important parts of front 
 2. Go to `/package.json` and create your preset script:
 
 ```json
-{ 
+{
   "scripts": {
-      "start": "webpack serve --env mode=development",
-      "start:dashboard": "webpack-dashboard -c red -- webpack serve --env mode=development --env presets=dashboard",
-      "lint": "tsc && prettier -c . && eslint . --ext .js,.jsx,.ts,.tsx -f codeframe",
-      "build:dev": "webpack --env mode=development",
-      "build:prod": "webpack --env mode=production",
-      "build:prod:compress": "npm run build:prod -- --env presets=compress",
-      "build:prod:analyze": "npm run build:prod -- --env presets=analyze"
-    },
- }
+    "start": "webpack serve --env mode=development",
+    "start:dashboard": "webpack-dashboard -c red -- webpack serve --env mode=development --env presets=dashboard",
+    "lint": "tsc && prettier -c . && eslint . --ext .js,.jsx,.ts,.tsx -f codeframe",
+    "build:dev": "webpack --env mode=development",
+    "build:prod": "webpack --env mode=production",
+    "build:prod:compress": "npm run build:prod -- --env presets=compress",
+    "build:prod:analyze": "npm run build:prod -- --env presets=analyze"
+  },
+}
 ```
