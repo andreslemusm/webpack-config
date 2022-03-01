@@ -1,3 +1,6 @@
+> I suggest you to use [Vite](https://vitest.dev/)
+
+
 # Webpack Config
 
 Webpack initial configuration, with best practices in mind.
